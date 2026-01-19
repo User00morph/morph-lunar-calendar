@@ -14,7 +14,7 @@ function getMoonPhases(year) {
     let phases = [];
     let lunarCycle = 29.53059;
     let baseDate = DateTime.fromISO("2000-01-06T18:14:00Z");
-    let daysSinceBase = baseDate.until(DateTime.utc(year, 1, 1)).as('days');
+    let daysSinceBase = DateTime.utc(year, 1, 1).diff(baseDate, 'days').days;
     let cyclesSinceBase = Math.floor(daysSinceBase / lunarCycle);
     let firstCycle = baseDate.plus({ days: cyclesSinceBase * lunarCycle });
 
